@@ -1,0 +1,54 @@
+MACHINE OF RECORD FAILURE LOG
+Study: ray-distributed-lab. Date: 2026-11-08 (America/Toronto).
+Machine: the Muse VM named in PREREGISTRATION.md as frozen
+(4 cores, 7.7 GB RAM, Python 3.12.3). Outcome: Ray cannot start
+on this machine. No measured study run had taken place when
+this was established; the only prior executions were 1-epoch
+smoke runs of arms A and B to /tmp, which are not study data.
+This file is the preserved evidence behind Amendment A1 to
+PREREGISTRATION.md and DECISIONS.md D1.
+
+1. Arm C smoke (Ray Train, TorchTrainer), 2026-11-08 about
+   21:25 EST, wall time 13m58s, ended in failure:
+     ray.exceptions.RpcError: Timed out while waiting for GCS
+     to become available.
+   (raised from ray._raylet.GcsClient / InnerGcsClient.
+   standalone). The GCS server process itself started and kept
+   printing periodic stats for the whole attempt; no raylet
+   logs were ever produced.
+
+2. Minimal ray.init probe with _node_ip_address="127.0.0.1":
+   same hang; the driver never returned from init.
+
+3. Minimal gRPC probe (grpcio, a Ray dependency), in-process
+   server and client on 127.0.0.1, default poll strategy
+   (epoll1): the call never completed; grpc deadline exceeded
+   after 10 s.
+
+4. Same probe with GRPC_POLL_STRATEGY=epoll:
+     E1108 ... ev_posix.cc:134] No event engine could be
+     initialized from epoll
+   epoll is not available in this sandbox.
+
+5. Same probe, separate server and client processes, both
+   GRPC_POLL_STRATEGY=poll: DEADLINE_EXCEEDED again.
+
+6. Same probe, in-process, GRPC_POLL_STRATEGY=poll:
+   UNAVAILABLE: failed to connect to all addresses; last
+   error: UNAVAILABLE: ipv4:127.0.0.1:<port>: recvmsg:
+   Connection reset by peer (104).
+
+Conclusion: gRPC does not function on this VM under any poll
+strategy tried. Ray 2.60 requires gRPC for its GCS and raylet
+control plane, so no Ray arm (C, or R in either pattern) can
+run here. Plain PyTorch (arms A, B) and the plain inference
+loop (arm P) do run here, but splitting arms across machines
+would void the within-study comparisons every hypothesis
+depends on, so the whole study moves. Precedent in this
+programme: kafka-streaming-lab made the same move for the
+same class of reason (its Amendment A1, 2026-11-08).
+
+Successor machine (verified before the amendment was written):
+BlackBoxV2, Jesun's always-on Ubuntu machine: 8 cores, 14 GB
+RAM, 135 GB free disk, Python 3.14.4, x86_64. Ray 2.60.0 and
+torch 2.15.0 both publish cp314 wheels.
