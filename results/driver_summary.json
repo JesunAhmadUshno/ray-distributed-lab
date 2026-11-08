@@ -1,0 +1,17 @@
+{
+  "cells": {
+    "dataset_verify": "ok",
+    "inference_P": "ok",
+    "inference_R": "ok",
+    "train_A_s42": "ok",
+    "train_A_s43": "ok",
+    "train_A_s44": "ok",
+    "train_B_s42": "ok",
+    "train_B_s43": "ok",
+    "train_B_s44": "ok",
+    "train_C_s42": "ok",
+    "train_C_s43": "ok",
+    "train_C_s44": "ok",
+    "versions": "ok"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "aggregates": {
+    "a": {
+      "accuracies": [
+        0.6603703703703704,
+        0.7574074074074074,
+        0.7362962962962963
+      ],
+      "mean_accuracy": 0.7180246913580247,
+      "median_throughput": 50.67126208502486,
+      "runs_ok": 3,
+      "throughputs": [
+        50.24517022937655,
+        51.22585525485739,
+        50.67126208502486
+      ]
+    },
+    "b": {
+      "accuracies": [
+        0.692962962962963,
+        0.6774074074074075,
+        0.7066666666666667
+      ],
+      "mean_accuracy": 0.6923456790123458,
+      "median_throughput": 57.795364114252536,
+      "runs_ok": 3,
+      "throughputs": [
+        57.735913643474014,
+        58.02225578132744,
+        57.795364114252536
+      ]
+    },
+    "c": {
+      "accuracies": [
+        0.692962962962963,
+        0.6774074074074075,
+        0.7525925925925926
+      ],
+      "mean_accuracy": 0.7076543209876544,
+      "median_throughput": 55.07603749960699,
+      "runs_ok": 3,
+      "throughputs": [
+        54.739677906811906,
+        55.44749022467477,
+        55.07603749960699
+      ]
+    }
+  },
+  "checkpoint_sha256": "8b112300077c2b0f0acc7bc478914c521e54266b7f865ddf9f46c7b8d8d1d7c5",
+  "inference": {
+    "complete": true,
+    "p": {
+      "128": {
+        "latency_mean_s": 1.1495988926610152,
+        "latency_p50_s": 1.134952867490938,
+        "latency_p95_s": 1.2894651259426608,
+        "makespan_s": 51.089651660993695,
+        "n_batches_measured": 80,
+        "throughput_images_s": 200.43197921856475,
+        "total_images": 10240
+      },
+      "32": {
+        "latency_mean_s": 0.2752195957222284,
+        "latency_p50_s": 0.27069384399510454,
+        "latency_p95_s": 0.32104270814888874,
+        "makespan_s": 12.450400425994303,
+        "n_batches_measured": 80,
+        "throughput_images_s": 205.61587679181454,
+        "total_images": 2560
+      }
+    },
+    "pattern_r": "ray-serve",
+    "r": {
+      "128": {
+        "latency_mean_s": 1.0440404635879532,
+        "latency_p50_s": 1.06655989101273,
+        "latency_p95_s": 1.1984195361699677,
+        "makespan_s": 46.87271341102314,
+        "n_batches_measured": 80,
+        "throughput_images_s": 218.463990130169,
+        "total_images": 10240
+      },
+      "32": {
+        "latency_mean_s": 0.2602235835631291,
+        "latency_p50_s": 0.261766969008022,
+        "latency_p95_s": 0.30994356131122913,
+        "makespan_s": 11.772535222000442,
+        "n_batches_measured": 80,
+        "throughput_images_s": 217.45528484093109,
+        "total_images": 2560
+      }
+    },
+    "throughput_ratio_128": 1.0899657379122167
+  },
+  "scaling_efficiency": {
+    "b": 0.5702972625516377,
+    "c": 0.543464236268588
+  },
+  "training_complete": true,
+  "verdicts": {
+    "H1": "CONFIRMED",
+    "H2": "CONFIRMED",
+    "H3": "INCONCLUSIVE"
+  }
+}

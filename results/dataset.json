@@ -1,0 +1,43 @@
+{
+  "dataset": "EuroSAT RGB",
+  "image_dir": "/home/jesunushno/raylab-data/EuroSAT_RGB",
+  "image_size_checked": [
+    64,
+    64
+  ],
+  "per_class_counts": {
+    "AnnualCrop": 3000,
+    "Forest": 3000,
+    "HerbaceousVegetation": 3000,
+    "Highway": 2500,
+    "Industrial": 2500,
+    "Pasture": 2000,
+    "PermanentCrop": 2500,
+    "Residential": 3000,
+    "River": 2500,
+    "SeaLake": 3000
+  },
+  "split_sizes": {
+    "test": 2700,
+    "train": 21600,
+    "val": 2700
+  },
+  "subset_per_class": {
+    "AnnualCrop": 400,
+    "Forest": 400,
+    "HerbaceousVegetation": 400,
+    "Highway": 400,
+    "Industrial": 400,
+    "Pasture": 400,
+    "PermanentCrop": 400,
+    "Residential": 400,
+    "River": 400,
+    "SeaLake": 400
+  },
+  "subset_size": 4000,
+  "total_images": 27000,
+  "version": "v2",
+  "zenodo_record": 7711810,
+  "zip_md5_record": "f46e308c4d50d4bf32fedad2d3b",
+  "zip_sha256": "b4f5b234ecb7d7ff9c6cddb046543b4717c53fd6e9815be6c0e80cc614f51b90"
+}

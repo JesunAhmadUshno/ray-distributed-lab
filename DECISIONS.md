@@ -44,3 +44,10 @@ the reasoning and the implementation-level calls.
   frozen pins exactly (torch 2.15.0+cpu, torchvision
   0.29.2+cpu, ray 2.60.0, numpy 2.5.4); the remote freeze is
   saved as requirements-lock-blackboxv2.txt.
+- D5 (2026-11-08, after the runs): the claim-boundary line
+  that scripts/make_results.py prints in RESULTS.md still
+  named the original machine (4 cores, 7.7 GB) after Amendment
+  A1 moved the study. The generator text is corrected and
+  RESULTS.md regenerated from the same raw records; a diff
+  confirms no number, table or verdict changed, only that
+  provenance line.

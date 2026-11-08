@@ -1,0 +1,49 @@
+{
+  "arm": "A",
+  "command": "/home/jesunushno/ray-distributed-lab/src/run_training.py --arm A --seed 44 --out /home/jesunushno/ray-distributed-lab/results/runs/a_s44.json",
+  "counted_samples": 11360,
+  "counted_steps": 91,
+  "effective_batch": 128,
+  "env": {
+    "cpu_count": 8,
+    "device": "cpu",
+    "loadavg": [
+      5.36,
+      4.92,
+      4.0
+    ],
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.43",
+    "python": "3.14.4",
+    "ray": "2.60.0",
+    "timestamp_utc": "2026-11-08T22:10:20Z",
+    "torch": "2.15.0+cpu",
+    "torchvision": "0.29.2+cpu"
+  },
+  "epoch_rows": [
+    {
+      "epoch": 1,
+      "epoch_train_wall_s": 81.49799434200395,
+      "train_loss": 1.3226954340934753
+    },
+    {
+      "epoch": 2,
+      "epoch_train_wall_s": 81.5830875110114,
+      "train_loss": 0.9051781315803528
+    },
+    {
+      "epoch": 3,
+      "epoch_train_wall_s": 81.13979952401132,
+      "train_loss": 0.7356358633041382
+    }
+  ],
+  "epochs": 3,
+  "loader_workers": 0,
+  "per_rank_batch": 128,
+  "seed": 44,
+  "step_time_s": 224.19019247908727,
+  "test_accuracy": 0.7362962962962963,
+  "threads_per_process": 2,
+  "throughput_samples_s": 50.67126208502486,
+  "wall_s": 259.81217794000986,
+  "world_size": 1
+}
