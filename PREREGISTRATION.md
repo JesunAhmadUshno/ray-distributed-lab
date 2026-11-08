@@ -276,4 +276,28 @@ version, and producing command.
 
 ## Amendments
 
-None at freeze time.
+- A1 (2026-11-08, before any measured run): the machine of
+  record changes. The VM named above cannot run Ray at all:
+  gRPC, which Ray's control plane requires, does not function
+  on it under any poll strategy (default epoll1 hangs; epoll
+  is unavailable in the sandbox; poll hangs or is reset).
+  Full evidence: results/machine-of-record-failure.log.
+  DECISIONS.md D1 records the diagnosis. The successor machine
+  is BlackBoxV2 (Jesun's always-on Ubuntu machine): 8 cores,
+  14 GB RAM, Python 3.14.4, x86_64. Every design constant is
+  unchanged: world size 2, threads 2 per training process,
+  serving thread budget 4 total, effective batch 128, subset
+  4,000, epochs 3, seeds 42/43/44, loader workers 0, all
+  measurement definitions and all verdict rules. All arms
+  (A, B, C, P, R) run on the successor machine, so every
+  within-study comparison stands. What the move costs: the
+  baseline study's C1 and C2 numbers were measured on the
+  original VM class, so they remain context and priors only,
+  which is how this document already frames them; no
+  cross-machine absolute comparison will be drawn anywhere in
+  RESULTS.md. Version pins for the successor machine: ray
+  2.60.0 and torch 2.15.0 are held; the interpreter is Python
+  3.14.4 (the machine's only Python), and the exact installed
+  set is recorded in results/versions.json from that machine.
+  Precedent: kafka-streaming-lab, Amendment A1, same day, same
+  class of cause.
