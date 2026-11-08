@@ -171,6 +171,11 @@ def run_ray_serve(ckpt_path: str, tensor: torch.Tensor) -> dict:
 
     ray.init(ignore_reinit_error=True, log_to_driver=False)
     try:
+        # Port 8000 is held by a pre-existing service on the
+        # machine of record (DECISIONS.md D3). Clients use the
+        # deployment handle, so the HTTP proxy port carries no
+        # study traffic; it only has to be free.
+        serve.start(detached=False, http_options={"host": "127.0.0.1", "port": 8231})
         handle = serve.run(Predictor.bind(ckpt_abs), name="raylab_predictor")
         # Readiness probe outside the measured stream.
         probe = np.zeros((1, 3, 64, 64), dtype=np.float32)

@@ -25,3 +25,22 @@ the reasoning and the implementation-level calls.
   the load reading is co-tenancy evidence for the audit, not a
   measurement input. No definition in PREREGISTRATION.md
   changes.
+- D3 (2026-11-08, before any measured run): arm R uses Ray
+  Serve, the primary pattern. It starts cleanly on BlackBoxV2
+  with one adjustment: its HTTP proxy binds port 8231 instead
+  of the default 8000, because port 8000 on BlackBoxV2 is held
+  by a pre-existing service (a python3 server.py, not ours, not
+  touched). Study clients use the deployment handle, so the
+  HTTP port carries no measured traffic. The frozen actors
+  fallback was not triggered.
+- D4 (2026-11-08, before any measured run): on BlackBoxV2 the
+  study runs inside a clone of this repo at ~/ray-distributed-lab
+  with the dataset at ~/raylab-data (zip SHA-256 re-verified
+  there against the frozen value before extraction). The
+  interpreter there is Python 3.14.4, the machine's only
+  Python, created with venv --without-pip plus a bootstrapped
+  pip because the system Python ships no ensurepip and is
+  externally managed (PEP 668). Installed versions match the
+  frozen pins exactly (torch 2.15.0+cpu, torchvision
+  0.29.2+cpu, ray 2.60.0, numpy 2.5.4); the remote freeze is
+  saved as requirements-lock-blackboxv2.txt.
