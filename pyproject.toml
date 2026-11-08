@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "ray-distributed-lab"
 version = "1.0.0"
 description = "Pre-registered measurement study of Ray Train and Ray serving against native PyTorch CPU DDP baselines on EuroSAT"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 license = { text = "Apache-2.0" }
 
 [tool.pytest.ini_options]

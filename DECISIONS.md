@@ -51,3 +51,11 @@ the reasoning and the implementation-level calls.
   RESULTS.md regenerated from the same raw records; a diff
   confirms no number, table or verdict changed, only that
   provenance line.
+- D6 (2026-11-08, after the runs): CI runs Python 3.12 only.
+  The frozen numpy pin (2.5.4) requires Python 3.12 or newer,
+  so the house-standard 3.11 leg cannot install the
+  requirements at all (its failure is in the CI log of the
+  results commit). The study's interpreters are 3.12.3 and
+  3.14.4; pyproject requires-python is raised to match. No
+  study code or result is affected. Precedent:
+  xgboost-credit-benchmark recorded the same constraint.
