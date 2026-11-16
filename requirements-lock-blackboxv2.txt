@@ -72,7 +72,7 @@ requests==2.34.2
 rpds-py==2026.9.1
 setuptools==84.2.1
 six==1.17.0
-smart_open==9.0.2
+smart_open==9.0.3
 starlette==1.10.0
 sympy==1.14.0
 tensorboardX==2.6.5
