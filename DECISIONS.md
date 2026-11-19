@@ -59,3 +59,17 @@ the reasoning and the implementation-level calls.
   3.14.4; pyproject requires-python is raised to match. No
   study code or result is affected. Precedent:
   xgboost-credit-benchmark recorded the same constraint.
+- D7 (2026-11-17, correction recorded during the paper
+  claim-check): AUDIT.md (Deductions) and README.md both
+  quote the run-start load averages on BlackBoxV2 as "ranged
+  from 4.6 to 8.6" on 8 cores. That range is wrong at the
+  low end. Recomputing from the nine run records in
+  results/runs/ (a_s42, a_s43, a_s44, b_s42, b_s43, b_s44,
+  c_s42, c_s43, c_s44), taking the 1-minute load average
+  recorded at each run start (the first element of
+  env/loadavg, the field added under D2), the minimum is
+  4.00 (a_s43) and the maximum is 8.64 (c_s44): the correct
+  range is 4.00 to 8.64. AUDIT.md and README.md are frozen
+  records and are not edited; this entry is the correction
+  of record. The paper (preprint, 17 November 2026) already
+  discloses this discrepancy in its limitations.
